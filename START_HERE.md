@@ -6,18 +6,17 @@ The easiest route is **prepared project files → new GitHub repository → Stre
 
 - **GitHub** stores your project files and their history. A project folder there is called a **repository**, or repo.
 - **Streamlit** turns Python code into the website. **Streamlit Community Cloud** runs it online; this is called **deployment**.
-- **OpenAI's API** optionally supplies chatbot replies. An **API key** is a private password that your server uses to make these requests.
 - A **dependency** is a Python package the app needs. `requirements.txt` lists exact versions.
 - A **commit** saves a set of file changes. A **branch** lets you work separately before updating the main version.
 - A **terminal** is a command window, such as Windows PowerShell. You need it only for local running or optional local retraining.
 
-You need GitHub and Streamlit accounts for the online route. You need an OpenAI API account only for real chatbot replies. The prediction sections work without it.
+You need GitHub and Streamlit accounts for the online route. No API key or paid external service is required.
 
 ## 2. Extract the supplied project
 
-Download and extract the complete deployment ZIP. Open the folder that directly contains `app.py`: this is the **project root**. Keep a clean copy of the ZIP as your starting backup.
+Download the current repository using **GitHub → Code → Download ZIP**, then extract it. Open the folder that directly contains `app.py`: this is the **project root**. Keep a clean copy of the ZIP as your starting backup.
 
-The package contains app code, prepared model files, metadata, photographs, documentation, and a prediction template. Raw training CSVs and private API keys are separate. Keep raw CSVs on your computer or private training workspace; do not add them to GitHub for deployment.
+The package contains app code, prepared model files, metadata, photographs, documentation, and a prediction template. Raw training CSVs are separate. Keep raw CSVs on your computer or private training workspace; do not add them to GitHub for deployment.
 
 A GitHub repository should contain the extracted project contents, rather than the ZIP or another outer folder. In the repository, `app.py` must be visible at the top level.
 
@@ -30,7 +29,7 @@ A GitHub repository should contain the extracted project contents, rather than t
 5. Choose **Private** initially. You can choose **Public** if you want everyone to see the deployment source and have confirmed it contains no confidential data or credentials.
 6. Leave the optional README, `.gitignore`, and licence initialization off because the package already contains project files. Click **Create repository**.
 
-This opens a new project location; it does not deploy the app yet. Repository creation was not completed automatically because the available GitHub connection could not create a repository. Use the form above to complete this account step yourself. If you have already created it, open that repository and continue.
+This opens a new project location; it does not deploy the app yet. If you already have the `kisan-saathi-studio` repository, open it and continue with the existing files.
 
 ## 4. Upload the project files
 
@@ -38,9 +37,9 @@ On the new repository page, use **uploading an existing file** in Quick Setup. F
 
 Check the upload before committing:
 
-- Include `app.py`, `core.py`, `batch_tools.py`, `assistant.py`, `train.py`, `requirements.txt`, prepared model files, metadata, the template, documentation, assets, and configuration.
+- Include `app.py`, `core.py`, `batch_tools.py`, `requirements.txt`, prepared model files, metadata, the template, documentation, assets, and configuration. The separate full training package also includes `train.py` and the training notebook; they are not required for deployment.
 - Exclude raw training CSVs, real `.streamlit/secrets.toml`, `.venv`, `__pycache__`, and `.git`.
-- Preserve `.streamlit/config.toml` and `.streamlit/secrets.toml.example`. If your file picker hides the folder, use **Add file → Create new file**, enter each full path, and paste the corresponding supplied text.
+- Preserve `.streamlit/config.toml`. If your file picker hides the folder, use **Add file → Create new file**, enter `.streamlit/config.toml` as the full path, and paste the supplied configuration text.
 - Upload the individual extracted files, not the deployment ZIP. GitHub's browser upload has a 25 MiB limit per file and a 100-file limit per upload; use another batch if necessary.
 
 Enter a commit message such as **Add Kisan Saathi app and trained models** and save the upload. Confirm the default branch is `main`, and check that `app.py` is directly at the repository root. Your new URL will follow `https://github.com/YOUR_USERNAME/kisan-saathi-studio`.
@@ -51,42 +50,13 @@ Enter a commit message such as **Add Kisan Saathi app and trained models** and s
 2. Click **Create app** and choose the path for an app whose code already exists.
 3. Set the repository to `YOUR_USERNAME/kisan-saathi-studio`, branch to `main`, and main file path to `app.py`.
 4. In **Advanced settings**, select **Python 3.12**. Optionally choose an available app subdomain.
-5. You can leave AI secrets empty for the first launch. Save settings and deploy.
+5. No secrets are required. Save settings and deploy.
 
-Wait for the app to finish installing. Open the resulting `streamlit.app` address. The income and batch pages should work before AI is configured. Save that new address; it is distinct from the old app's URL.
+Wait for the app to finish installing. Open the resulting `streamlit.app` address. The Overview, Income estimator, and Batch predictions pages should work immediately. Save that new address; it is distinct from the old app's URL.
 
 Future commits to the branch Streamlit monitors update the deployed app. Changes to `requirements.txt` can take longer because packages are reinstalled. Keep the supplied pinned versions when using the prepared model bundle.
 
-## 6. Enable real chatbot replies
-
-1. Sign in to [OpenAI's API platform](https://platform.openai.com/). Select or create an API project.
-2. Review [API pricing](https://openai.com/api/pricing/) and configure API billing in that account. ChatGPT subscription payments do not themselves pay for API calls.
-3. Create a private key on the [API keys page](https://platform.openai.com/api-keys).
-4. Return to Streamlit Community Cloud. Next to your app, use **three-dot menu → Settings → Secrets**. Paste:
-
-```toml
-OPENAI_API_KEY = "replace-with-your-own-key"
-OPENAI_MODEL = "gpt-5.4-mini"
-```
-
-Replace only the key placeholder with your own key, keep the quotation marks, and click **Save**. Open **AI assistant** and send a short question. Keys belong in Streamlit Secrets, not in GitHub or the public app.
-
-A private key should be treated like a password. If exposed, revoke it in the API platform and create a replacement. The supplied example configuration contains placeholders only.
-
-### Cost and cheaper option
-
-Official model rates checked on 18 October 2026, in USD per million text tokens:
-
-| Model setting | Input | Output | Use |
-| --- | ---: | ---: | --- |
-| `gpt-5.4-mini` | $0.75 | $4.50 | Supplied default |
-| `gpt-6-luna` | $0.10 | $0.50 | Lower-cost alternative |
-
-A token is a small piece of text. For illustration, a request with 2,000 input and 500 output tokens costs about $0.00375 using the default, or $0.00045 with the cheaper option. Actual charges depend on usage and billing terms; recent chat and instructions count as input. To try the cheaper option, set `OPENAI_MODEL = "gpt-6-luna"` and test its answers. The supplied answer cap is 1,600 tokens. Browser-session limits do not provide an account-wide spending cap: review usage and account controls before sharing widely.
-
-Sources: [GPT-5.4 Mini](https://developers.openai.com/api/docs/models/gpt-5.4-mini) and [GPT-6 Luna](https://developers.openai.com/api/docs/models/gpt-6-luna). No API key was available for implementation testing, so you must confirm your own authenticated reply and model access.
-
-## 7. Use the two prediction models correctly
+## 6. Use the two prediction models correctly
 
 In **Income estimator**, try the clearly labelled example first, then use your source-consistent values for a real profile.
 
@@ -98,11 +68,7 @@ In **Income estimator**, try the clearly labelled example first, then use your s
 
 In **Batch predictions**, download the blank `input_template.csv` or try `sample_batch.csv`, which contains hypothetical profiles. Enter your records while preserving the eight headers. Review the preview and fix flagged rows before downloading results. Keep uploads within 15,000 rows and 25 MB. Downloads use row numbers to match input records and exclude unused identifiers.
 
-In **AI assistant**, **Share my last submitted estimate with the AI** starts unchecked. It is disabled before an estimate exists. Select it to attach only that profile and its actual model result; open **Review the profile and result that will be sent** first. **Clear conversation** clears history and unchecks sharing. Batch files are not attached automatically.
-
-This release has no connected web search, weather, mandi-price, or scheme-update feed. Ask the assistant to explain concepts, but do not treat its replies as verified current facts. It should tell you when current information is unavailable.
-
-## 8. Optional: run on your computer
+## 7. Optional: run on your computer
 
 Install [Python 3.12](https://www.python.org/downloads/) if needed. Open the extracted project folder in a terminal. On Windows PowerShell, use one command at a time:
 
@@ -122,11 +88,9 @@ python3.12 -m venv .venv
 
 The `.venv` folder isolates packages for this project. Open the local web address shown, usually `http://localhost:8501`. Leave the terminal running; press `Ctrl+C` to stop.
 
-For local AI, copy `.streamlit/secrets.toml.example` to `.streamlit/secrets.toml`, put your real key in that local copy, and restart if necessary. Never upload the real copy. Environment variables with the same names are an alternative configuration method.
+## 8. Optional: repeat training for your assignment
 
-## 9. Optional: repeat training for your assignment
-
-Deploying the prepared package does not require retraining. Repeat training to understand the complete workflow, reproduce the evaluation, or deliberately use a revised dataset. Your source files are `lte_train(1).csv`, `lte_test(1).csv`, and `lte_dictionary(1).csv`; keep them privately. The dictionary explains source columns and is useful for your assignment; the training command uses the labelled training CSV and optionally the unlabeled test CSV.
+Deploying the prepared package does not require retraining. The following optional steps use `train.py` and `Train_Your_Models.ipynb` from the separate full project package. Repeat training to understand the complete workflow, reproduce the evaluation, or deliberately use a revised dataset. Your source files are `lte_train(1).csv`, `lte_test(1).csv`, and `lte_dictionary(1).csv`; keep them privately. The dictionary explains source columns and is useful for your assignment; the training command uses the labelled training CSV and optionally the unlabeled test CSV.
 
 ### Easier training route: Google Colab
 
@@ -140,7 +104,7 @@ Raw datasets belong in the private runtime, not a public GitHub repository. A sh
 
 ### Local training route
 
-After installing dependencies using step 8, copy the original CSVs into a private folder such as `C:\Users\YOUR_NAME\Documents\FarmerData`. **First save a separate backup of the supplied project ZIP and its trained outputs.** The commands below use `--overwrite` to replace the prepared artifacts in the project folder deliberately; without that flag, the trainer refuses to overwrite an existing run. From the project root, use:
+After installing dependencies using step 7, copy the original CSVs into a private folder such as `C:\Users\YOUR_NAME\Documents\FarmerData`. **First save a separate backup of the supplied project ZIP and its trained outputs.** The commands below use `--overwrite` to replace the prepared artifacts in the project folder deliberately; without that flag, the trainer refuses to overwrite an existing run. From the project root, use:
 
 ```powershell
 .\.venv\Scripts\python.exe train.py --train "C:\Users\YOUR_NAME\Documents\FarmerData\lte_train(1).csv" --test "C:\Users\YOUR_NAME\Documents\FarmerData\lte_test(1).csv" --output-dir . --overwrite
@@ -165,17 +129,13 @@ On macOS/Linux, substitute your actual private paths:
 
 A holdout is a reserved part of the labelled dataset used to measure performance. The separate `lte_test(1).csv` has no true income labels, so its predictions cannot tell you accuracy. Read actual MAE, RMSE, R², and classification metrics in `MODEL_REPORT.md` rather than describing all outputs as “accuracy”. Keep the trained bundle and matching metadata from one run together.
 
-## 10. Test the deployed result
+## 9. Test the deployed result
 
-1. Confirm exactly four sections: Overview, Income estimator, Batch predictions, AI assistant.
+1. Confirm exactly three sections: Overview, Income estimator, Batch predictions.
 2. Submit a valid example. Both the INR estimate and below-benchmark probability should appear.
 3. Try a required field left blank, a negative value, and an unsupported state in a CSV. Confirm useful validation messages.
 4. Upload `sample_batch.csv`, or fill `input_template.csv` with valid records before uploading it, then download predictions. The blank input template contains headers only and cannot produce predictions by itself. Check row numbers and the absence of unused IDs.
-5. With a valid key, send a short AI question. Then opt into sharing an estimate and inspect its preview.
-6. Clear the conversation and confirm both chat history and sharing reset.
-7. In local testing, remove the key and confirm the estimator and batch sections remain usable.
-8. Ask for today's local mandi price. The assistant should explain that it cannot verify current prices in this release.
-9. Open the deployed app on a laptop and phone. Check that forms, charts, and results fit.
+5. Open the deployed app on a laptop and phone. Check that forms, charts, photographs, and results fit.
 
 Read the release verification notes for what was actually tested. A saved metric in a JSON file is evidence from that evaluation run, not a new measurement every time the website opens.
 
@@ -187,11 +147,11 @@ Use the format requested by your professor. A practical submission includes:
 - The generated `MODEL_REPORT.md`, explaining the method, actual evaluation scores, and limitations.
 - Your working Streamlit app URL.
 - Your new GitHub repository URL, with access provided if it is private.
-- Screenshots of all four app sections, including an actual individual estimate and a completed batch result. Include a real AI reply only after configuring and testing your API key.
+- Screenshots of all three app sections, including an actual individual estimate and a completed batch result.
 
-Use results from your actual run and label the hypothetical example profiles. Do not invent scores, replies, or a deployed URL. Keep raw borrower datasets and credentials outside the public submission files.
+Use results from your actual run and label the hypothetical example profiles. Do not invent scores or a deployed URL. Keep raw borrower datasets and credentials outside the public submission files.
 
-## 11. Logs, common errors, and rollback
+## 10. Logs, common errors, and rollback
 
 While signed in, open your deployed app and select **Manage app** at the lower right. Cloud logs show installation and runtime errors; the panel's menu includes download, settings, and reboot options. Locally, read the terminal running Streamlit.
 
@@ -201,13 +161,10 @@ While signed in, open your deployed app and select **Manage app** at the lower r
 | Missing model | All prepared model/metadata files are at their expected paths |
 | Model version warning | Use the supplied pinned versions and Python 3.12 |
 | Missing photographs | Preserve the `assets/` folder names and paths |
-| AI configuration message | Save the real key in this deployed app's Secrets tab |
-| Authentication error | Key is active and copied correctly |
-| Quota/rate-limit error | Check API billing, usage, model access, and limits |
 | Old page still visible | Correct repository/branch/file are selected; wait for rebuilding and reload |
 | CSV error | Use template headers, supported state names, and finite non-negative numbers |
 
-Before changing code or models, download a backup with **GitHub → Code → Download ZIP**, and note the current commit. For recovery, restore the previous files as a new commit or use GitHub's revert flow for a merged change. Keep model files and metadata from the same release together. Code rollback does not restore secrets edited in Streamlit; manage those separately.
+Before changing code or models, download a backup with **GitHub → Code → Download ZIP**, and note the current commit. For recovery, restore the previous files as a new commit or use GitHub's revert flow for a merged change. Keep model files and metadata from the same release together.
 
 ## Official help
 
@@ -216,7 +173,6 @@ Instructions checked on 18 October 2026:
 - [Create a GitHub repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository)
 - [Upload files](https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository)
 - [Deploy Streamlit](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/deploy)
-- [Secrets management](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/secrets-management)
 - [App settings](https://docs.streamlit.io/deploy/streamlit-community-cloud/manage-your-app/app-settings)
 - [Cloud logs and updates](https://docs.streamlit.io/deploy/streamlit-community-cloud/manage-your-app)
 - [Colab FAQ](https://research.google.com/colaboratory/intl/en-GB/faq.html)

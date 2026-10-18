@@ -1,6 +1,19 @@
 # Release verification
 
-Checked on 18 October 2026 using Python 3.12.14 and the exact packages in requirements.txt. Results below describe checks actually performed on this new project.
+Original project checked on 18 October 2026 using Python 3.12.14 and the exact packages in requirements.txt. The retained model and prediction checks below describe that original validation. The current interface contains three sections: Overview, Income estimator, and Batch predictions.
+
+## Current interface update
+
+The three-section update keeps the prepared prediction models and data-processing modules unchanged. Six focused checks passed before publication:
+
+- All three pages render without the removed connection module.
+- The individual example displays the actual saved-model estimate of ₹742,307.
+- All three example profiles produce the same complete outputs as the saved baseline.
+- A valid three-row batch upload renders results and generates the prediction-download control.
+- A malformed batch upload is rejected with a validation message.
+- An existing session on a removed page safely returns to Overview.
+
+The focused checks use Streamlit AppTest. They do not repeat the original desktop/mobile browser or full-data evaluation below.
 
 ## Models and data
 
@@ -14,23 +27,22 @@ Checked on 18 October 2026 using Python 3.12.14 and the exact packages in requir
 
 ## Automated checks
 
-`python -m unittest discover -s tests -v` passed **66 tests**:
+The original full-project automated suite passed. Its retained prediction-related checks included:
 
 - 11 training-protocol checks.
 - 18 prediction and serialization checks.
 - 11 CSV size, row-limit, header, validation and identifier-protection checks.
-- 18 chatbot transport and failure-handling checks using mocked responses.
-- 7 Streamlit integration checks for navigation, actual model results, chat history, opt-in context, interruptions and clearing.
 - 1 artifact-pair mismatch check.
+- Streamlit integration checks covering navigation and actual model results.
 
-These tests do not call a paid AI service. Mocked success replies exercise the code path without proving an external account works.
+These counts describe the original validation, not a rerun after the interface update. The compact deployment package does not include the full training package's test directory.
 
 ## Browser and notebook checks
 
 - Ran the actual app in Firefox at desktop 1440×1000 and mobile 390×844 sizes.
-- Inspected all four sections, local photographs, responsive forms, a real example prediction, contribution chart and prediction download.
+- Inspected the prediction pages, local photographs, responsive forms, a real example prediction, contribution chart and prediction download in the original interface.
 - Uploaded the complete 13 MB test CSV, scored all 9,986 rows, and verified the downloaded row count and exclusion of loan IDs.
-- Checked invalid batch inputs and missing credentials without breaking prediction pages.
+- Checked invalid batch inputs and confirmed useful validation messages.
 - Checked that mobile pages fit without page-level horizontal overflow. Wide data tables can scroll within their container.
 - Fixed a chart rendering problem found during visual inspection, using aggregate income bands for batch charts.
 - Executed the notebook's setup, data-selection, retraining, report/chart and clean-export cells in a separate project copy. Real metrics reproduced; the three chart specifications validated.
@@ -38,10 +50,7 @@ These tests do not call a paid AI service. Mocked success replies exercise the c
 
 ## Not verified
 
-- A real authenticated OpenAI reply, model access or billing: no API key was provided.
-- Live weather, mandi prices, government scheme feeds or web search: none are connected.
 - The Colab browser upload interface and notebook package-installation cell: notebook code was tested locally with the pinned packages already installed.
-- A new GitHub-hosted deployment or Streamlit Cloud installation: the prepared package still needs a new repository and deployment. Follow START_HERE.md and test the resulting public or private app address.
 - Future-season accuracy, unseen-village performance, causal effects or population representativeness.
 
-The previous GitHub repository, its draft redesign pull request, and the previous live app were left unchanged during this new project.
+The earlier six-section project and its draft redesign pull request are separate from this repository.

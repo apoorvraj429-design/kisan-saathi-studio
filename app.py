@@ -1,11 +1,9 @@
-"""Kisan Saathi: historical income estimates and a connected AI assistant.
+"""Kisan Saathi: historical income estimates for individual and batch profiles.
 Run with: python -m streamlit run app.py
 """
 import base64
 import html
-import io
 import json
-from pathlib import Path
 
 import altair as alt
 import numpy as np
@@ -15,10 +13,9 @@ import streamlit as st
 from core import (ROOT, NUM, FEATURES, LABELS, UNITS, load_artifacts,
                   validate_inputs, score, contributions, safe_csv, inr)
 from batch_tools import inspect_rows, read_batch, BatchInputError
-from assistant import load_config, configured, stream_reply, AssistantError
 
 st.set_page_config(page_title="Kisan Saathi | Farmer income", page_icon="🌾", layout="wide")
-PAGES = ["Overview", "Income estimator", "Batch predictions", "AI assistant"]
+PAGES = ["Overview", "Income estimator", "Batch predictions"]
 GREEN = "#24583e"
 GOLD = "#b78731"
 
@@ -87,13 +84,17 @@ def styled(chart, height=270):
         legend={"labelFontSize": 13, "titleFontSize": 13})
 
 
+# Recover existing sessions whose selected page was removed in an update.
+if st.session_state.get("workspace") not in PAGES:
+    st.session_state["workspace"] = "Overview"
+
 with st.sidebar:
     st.markdown('<div class="brand"><span class="brand-icon">🌾</span><div>Kisan Saathi'
                 '<small>FARMER INCOME COMPANION</small></div></div>', unsafe_allow_html=True)
     st.radio("Explore Kisan Saathi", PAGES, key="workspace", label_visibility="collapsed")
     st.divider()
     st.markdown("**A little clarity for your next decision.**")
-    st.caption("Estimate a comparable profile’s total income, work with a CSV, or ask a question.")
+    st.caption("Estimate a comparable profile’s total income or compare profiles from a CSV.")
     st.markdown('<div class="sidebar-note">Historical data prototype<br>Income in Indian rupees</div>', unsafe_allow_html=True)
     st.caption("Built by Apoorv Raj · Predictive analytics assignment")
 
@@ -104,22 +105,20 @@ def overview():
              if image else '<div class="photo-fallback">🌾<br>Rooted in agriculture</div>')
     st.markdown('<div class="hero"><div class="hero-copy"><p class="eyebrow">YOUR FARMER INCOME COMPANION</p>'
                 '<h1>Rooted in farming.<br>Informed by data.</h1>'
-                '<p>Understand an income estimate, compare profiles, and ask questions. A clearer view starts with the information you know.</p>'
+                '<p>Understand an income estimate and compare profiles. A clearer view starts with the information you know.</p>'
                 '<div class="hero-note">Historical estimates · Farm + non-farm income · INR</div></div>'
                 f'<div class="hero-visual">{photo}<span class="photo-label">People at the heart of agriculture</span></div></div>',
                 unsafe_allow_html=True)
     a, b, _ = st.columns([1.2, 1.2, 2.3])
     a.button("Estimate a profile", type="primary", use_container_width=True, on_click=go, args=("Income estimator",))
-    b.button("Ask the AI assistant", use_container_width=True, on_click=go, args=("AI assistant",))
+    b.button("Predict from a CSV", use_container_width=True, on_click=go, args=("Batch predictions",))
     st.caption("Photograph: EqualStock IN / Pexels. Used under the Pexels License.")
     st.markdown('<div class="model-strip"><span>🌱 <b>Linear regression</b> estimates an amount</span>'
-                '<span>◉ <b>Logistic regression</b> estimates a probability</span>'
-                '<span>✦ <b>AI assistant</b> helps explain</span></div>', unsafe_allow_html=True)
+                '<span>◉ <b>Logistic regression</b> estimates a probability</span></div>', unsafe_allow_html=True)
     st.markdown("## Choose what you need")
-    columns = st.columns(3, gap="medium")
+    columns = st.columns(2, gap="medium")
     items = [("01", "One profile", "Enter eight inputs and see an income estimate with an explanation.", "Income estimator"),
-             ("02", "Many profiles", "Upload a CSV, check its rows, and download the predictions.", "Batch predictions"),
-             ("03", "A conversation", "Ask about the app, farming, business, or a result you choose to share.", "AI assistant")]
+             ("02", "Many profiles", "Upload a CSV, check its rows, and download the predictions.", "Batch predictions")]
     for col, (n, title, text, destination) in zip(columns, items):
         with col:
             tile(n, title, text)
@@ -161,7 +160,7 @@ def overview():
         st.markdown('<p class="eyebrow">TWO MODELS. ONE PRACTICAL TOOL.</p>', unsafe_allow_html=True)
         st.subheader("From a dataset to an informed question")
         st.write("Linear regression learns a numerical relationship between eight inputs and total income. Logistic regression answers a different question: how likely is income to fall below the training dataset’s median?")
-        st.write("The AI assistant explains these results when you choose to share them. It does not calculate or replace either trained model.")
+        st.write("Explore one profile in the income estimator, or compare several profiles with a CSV upload. Each result includes an explanation of its limitations.")
         st.caption("A teaching project built from historical, loan-linked records. An estimate supports exploration; it is not a verified personal income statement.")
     if META:
         with st.expander("How this assignment model was built and checked"):
@@ -272,7 +271,6 @@ def estimator():
             result_panel(row)
             out = pd.concat([row.reset_index(drop=True), score(row, BUNDLE, META)], axis=1)
             st.download_button("Download this estimate", safe_csv(out), "kisan_saathi_estimate.csv", "text/csv", use_container_width=True)
-            st.button("Discuss this estimate with AI", use_container_width=True, on_click=go, args=("AI assistant",))
     st.caption("The model learns from historical records and depends strongly on knowing the non-farm component of total income. It has not demonstrated reliable current-season forecasting.")
 
 
@@ -281,7 +279,7 @@ def batch():
     if not require_model():
         return
     a, b = st.columns([2, 1])
-    a.write("Use the eight-column template or the original source headers. Maximum 15,000 rows and 25 MB. Files stay in this app session and are not sent to the AI assistant.")
+    a.write("Use the eight-column template or the original source headers. Maximum 15,000 rows and 25 MB. Uploaded files are processed within this app session.")
     if (ROOT / "input_template.csv").exists():
         b.download_button("Download input template", (ROOT / "input_template.csv").read_bytes(), "input_template.csv", "text/csv", use_container_width=True)
     if (ROOT / "sample_batch.csv").exists():
@@ -331,99 +329,8 @@ def batch():
     st.caption(f"The comparison benchmark is {inr(META['benchmark_inr'])}, the training median. The empirical range is broad and does not guarantee an individual outcome.")
 
 
-def estimate_context():
-    saved = st.session_state.get("last_income")
-    if saved is None or not META or not BUNDLE:
-        return None
-    row = saved["row"]
-    result = score(row, BUNDLE, META).iloc[0]
-    values = {field: (None if pd.isna(row.iloc[0][field]) else str(row.iloc[0][field]) if field == "state" else float(row.iloc[0][field])) for field in FEATURES}
-    return {"inputs": values, "prediction": {
-        "predicted_total_income_inr": float(result.predicted_total_income_inr),
-        "range_low_inr": float(result.range_low_inr), "range_high_inr": float(result.range_high_inr),
-        "probability_below_benchmark": float(result.probability_below_benchmark),
-        "benchmark_inr": float(META["benchmark_inr"])},
-        "notes": "Total income is farm plus non-farm income, in INR. Reporting period and land units unspecified. Indicators include 2022 data. Range is empirical, no individual guarantee. Benchmark is training median. Blank numeric inputs use training medians."}
+{"Overview": overview, "Income estimator": estimator, "Batch predictions": batch}[st.session_state["workspace"]]()
 
-
-def clear_conversation():
-    st.session_state["messages"] = []
-    st.session_state["share_estimate"] = False
-    st.session_state.pop("pending_prompt", None)
-
-
-def ai_assistant():
-    heading("A CONVERSATION", "AI assistant", "Ask a question in plain language. You can ask in English or Hindi.")
-    try:
-        secrets = dict(st.secrets)
-    except Exception:
-        secrets = {}
-    config = load_config(secrets)
-    ready = configured(config)
-    st.caption("AI replies through OpenAI · No connected live weather, mandi-price, or web-search feed")
-    if not ready:
-        st.info("The AI assistant is ready to connect. The app owner needs to add OPENAI_API_KEY in Streamlit Settings → Secrets. Income predictions work without it.")
-        with st.expander("Connection instructions for the app owner", expanded=True):
-            st.write("An API key is a private credential that lets this app call the AI service. Create it in your own OpenAI API account, set a usage budget, then paste the configuration below into the app’s Secrets settings. Keep real keys out of GitHub.")
-            st.code('OPENAI_API_KEY = "paste-your-private-key-here"\nOPENAI_MODEL = "gpt-5.4-mini"', language="toml")
-            st.write("Full instructions and current pricing links are in START_HERE.md. ChatGPT subscription billing and API billing are separate. This screen does not simulate AI replies.")
-    else:
-        st.success("AI service configured. Send a message to check the connection.", icon="✅")
-    context = estimate_context()
-    share = st.checkbox("Share my last submitted estimate with the AI", value=False, disabled=context is None, key="share_estimate",
-                        help="Sends only the single profile and result shown below with each new message. Batch uploads are never included.")
-    if context is None:
-        st.caption("Make an estimate first to enable sharing. General questions do not need a profile.")
-    elif share:
-        with st.expander("Review the profile and result that will be sent", expanded=False):
-            st.json(context)
-        st.caption("This single profile will be sent to OpenAI with your message. Turning sharing off does not erase earlier conversation text; use Clear conversation to remove that text from this session.")
-    left, right = st.columns([3, 1])
-    left.markdown("**Try a question**")
-    right.button("Clear conversation", use_container_width=True, on_click=clear_conversation)
-    starters = ["What inputs do I need?", "Explain the income error range.", "How can I compare farm business options?"]
-    columns = st.columns(3)
-    for i, question in enumerate(starters):
-        if columns[i].button(question, disabled=not ready, use_container_width=True, key="starter_" + str(i)):
-            st.session_state["pending_prompt"] = question
-    messages = st.session_state.setdefault("messages", [])
-    if not messages:
-        with st.chat_message("assistant", avatar="🌾"):
-            st.write("Hello! I’m Kisan Saathi’s AI assistant. Ask about this app, farming, business, or a general topic. I can explain your actual income estimate when you choose to share it.")
-    for message in messages:
-        with st.chat_message(message["role"]):
-            st.write(message["content"])
-    prompt = st.chat_input("Ask Kisan Saathi a question…", disabled=not ready, max_chars=4000)
-    prompt = prompt or st.session_state.pop("pending_prompt", None)
-    if prompt and ready:
-        messages.append({"role": "user", "content": prompt})
-        with st.chat_message("user"):
-            st.write(prompt)
-        with st.chat_message("assistant", avatar="🌾"):
-            chunks = []
-            def collect():
-                for chunk in stream_reply(messages, config, prediction_context=context if share else None):
-                    chunks.append(chunk)
-                    yield chunk
-            try:
-                with st.spinner("Thinking…"):
-                    st.write_stream(collect())
-                response = "".join(chunks)
-                messages.append({"role": "assistant", "content": response})
-            except AssistantError as exc:
-                if chunks:
-                    st.warning("The response stopped early. Please try again.")
-                st.error(str(exc))
-                # Do not retain a partial response as a complete answer.
-                messages.pop()
-            except Exception:
-                st.error("The AI service could not finish this reply. Please try again. Income prediction tools remain available.")
-                messages.pop()
-        st.session_state["messages"] = messages[-20:]
-
-
-{"Overview": overview, "Income estimator": estimator, "Batch predictions": batch,
- "AI assistant": ai_assistant}[st.session_state["workspace"]]()
 st.markdown('<div class="footer">Kisan Saathi · Historical income estimates for comparable profiles · Built by Apoorv Raj</div>', unsafe_allow_html=True)
 with st.expander("Photo credits"):
     st.markdown("Hero: [EqualStock IN / Pexels](https://www.pexels.com/photo/farmer-in-india-20445181/) · [Pexels License](https://www.pexels.com/license/). Additional photograph: [Siddharth Patil / Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Indian_farmers.jpg) · CC0 1.0.")

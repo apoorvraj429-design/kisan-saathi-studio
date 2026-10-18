@@ -1,0 +1,17 @@
+.streamlit/secrets.toml
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.DS_Store
+data/
+private_data/
+outputs/
+lte_train*.csv
+lte_test*.csv
+lte_dictionary*.csv
+*.zip
+.ipynb_checkpoints/

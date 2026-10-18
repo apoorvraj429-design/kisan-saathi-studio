@@ -1,0 +1,1272 @@
+{
+  "scopes": {
+    "All states": {
+      "n": 47970,
+      "median": 950000.0,
+      "mean": 1222255.3483218679,
+      "non_ag_median": 100000.0,
+      "below_benchmark_pct": 49.762351469668545,
+      "histogram": [
+        {
+          "band": "<5 lakh",
+          "count": 991
+        },
+        {
+          "band": "5\u201310 lakh",
+          "count": 24680
+        },
+        {
+          "band": "10\u201315 lakh",
+          "count": 13774
+        },
+        {
+          "band": "15\u201320 lakh",
+          "count": 4958
+        },
+        {
+          "band": "20\u201330 lakh",
+          "count": 2315
+        },
+        {
+          "band": "30\u201340 lakh",
+          "count": 451
+        },
+        {
+          "band": "40+ lakh",
+          "count": 801
+        }
+      ],
+      "land_bands": [
+        {
+          "band": "0\u20135",
+          "n": 8012,
+          "median": 800000.0
+        },
+        {
+          "band": "5\u201310",
+          "n": 15651,
+          "median": 811200.0
+        },
+        {
+          "band": "10\u201320",
+          "n": 19557,
+          "median": 1000000.0
+        },
+        {
+          "band": "20\u201340",
+          "n": 4389,
+          "median": 1400000.0
+        },
+        {
+          "band": "40+",
+          "n": 290,
+          "median": 2505000.0
+        }
+      ]
+    },
+    "ANDHRA PRADESH": {
+      "n": 3985,
+      "median": 1150000.0,
+      "mean": 1313913.1011292345,
+      "non_ag_median": 200000.0,
+      "below_benchmark_pct": 29.73651191969887,
+      "histogram": [
+        {
+          "band": "<5 lakh",
+          "count": 33
+        },
+        {
+          "band": "5\u201310 lakh",
+          "count": 1181
+        },
+        {
+          "band": "10\u201315 lakh",
+          "count": 1704
+        },
+        {
+          "band": "15\u201320 lakh",
+          "count": 747
+        },
+        {
+          "band": "20\u201330 lakh",
+          "count": 225
+        },
+        {
+          "band": "30\u201340 lakh",
+          "count": 67
+        },
+        {
+          "band": "40+ lakh",
+          "count": 28
+        }
+      ],
+      "land_bands": [
+        {
+          "band": "0\u20135",
+          "n": 101,
+          "median": 1000000.0
+        },
+        {
+          "band": "5\u201310",
+          "n": 778,
+          "median": 1000000.0
+        },
+        {
+          "band": "10\u201320",
+          "n": 2741,
+          "median": 1160000.0
+        },
+        {
+          "band": "20\u201340",
+          "n": 353,
+          "median": 1200000.0
+        },
+        {
+          "band": "40+",
+          "n": 6,
+          "median": 3728500.0
+        }
+      ]
+    },
+    "ASSAM": {
+      "n": 41,
+      "median": 911200.0,
+      "mean": 925964.6341463415,
+      "non_ag_median": 200000.0,
+      "below_benchmark_pct": 58.536585365853654,
+      "histogram": [
+        {
+          "band": "<5 lakh",
+          "count": 0
+        },
+        {
+          "band": "5\u201310 lakh",
+          "count": 35
+        },
+        {
+          "band": "10\u201315 lakh",
+          "count": 5
+        },
+        {
+          "band": "15\u201320 lakh",
+          "count": 1
+        },
+        {
+          "band": "20\u201330 lakh",
+          "count": 0
+        },
+        {
+          "band": "30\u201340 lakh",
+          "count": 0
+        },
+        {
+          "band": "40+ lakh",
+          "count": 0
+        }
+      ],
+      "land_bands": [
+        {
+          "band": "0\u20135",
+          "n": 12,
+          "median": 951000.0
+        },
+        {
+          "band": "5\u201310",
+          "n": 28,
+          "median": 910000.0
+        },
+        {
+          "band": "10\u201320",
+          "n": 1,
+          "median": 830000.0
+        }
+      ]
+    },
+    "BIHAR": {
+      "n": 1265,
+      "median": 700000.0,
+      "mean": 773668.9122529645,
+      "non_ag_median": 300000.0,
+      "below_benchmark_pct": 80.7905138339921,
+      "histogram": [
+        {
+          "band": "<5 lakh",
+          "count": 52
+        },
+        {
+          "band": "5\u201310 lakh",
+          "count": 1020
+        },
+        {
+          "band": "10\u201315 lakh",
+          "count": 169
+        },
+        {
+          "band": "15\u201320 lakh",
+          "count": 16
+        },
+        {
+          "band": "20\u201330 lakh",
+          "count": 6
+        },
+        {
+          "band": "30\u201340 lakh",
+          "count": 1
+        },
+        {
+          "band": "40+ lakh",
+          "count": 1
+        }
+      ],
+      "land_bands": [
+        {
+          "band": "0\u20135",
+          "n": 629,
+          "median": 662000.0
+        },
+        {
+          "band": "5\u201310",
+          "n": 538,
+          "median": 732150.0
+        },
+        {
+          "band": "10\u201320",
+          "n": 92,
+          "median": 899400.0
+        },
+        {
+          "band": "20\u201340",
+          "n": 5,
+          "median": 900000.0
+        }
+      ]
+    },
+    "CHANDIGARH": {
+      "n": 21,
+      "median": 1075000.0,
+      "mean": 1441030.9523809524,
+      "non_ag_median": 0.0,
+      "below_benchmark_pct": 38.095238095238095,
+      "histogram": [
+        {
+          "band": "<5 lakh",
+          "count": 0
+        },
+        {
+          "band": "5\u201310 lakh",
+          "count": 10
+        },
+        {
+          "band": "10\u201315 lakh",
+          "count": 3
+        },
+        {
+          "band": "15\u201320 lakh",
+          "count": 2
+        },
+        {
+          "band": "20\u201330 lakh",
+          "count": 5
+        },
+        {
+          "band": "30\u201340 lakh",
+          "count": 1
+        },
+        {
+          "band": "40+ lakh",
+          "count": 0
+        }
+      ],
+      "land_bands": [
+        {
+          "band": "5\u201310",
+          "n": 9,
+          "median": 825000.0
+        },
+        {
+          "band": "10\u201320",
+          "n": 6,
+          "median": 1298750.0
+        },
+        {
+          "band": "20\u201340",
+          "n": 6,
+          "median": 2475000.0
+        }
+      ]
+    },
+    "CHATTISGARH": {
+      "n": 799,
+      "median": 850000.0,
+      "mean": 962170.5707133918,
+      "non_ag_median": 100000.0,
+      "below_benchmark_pct": 59.19899874843555,
+      "histogram": [
+        {
+          "band": "<5 lakh",
+          "count": 42
+        },
+        {
+          "band": "5\u201310 lakh",
+          "count": 486
+        },
+        {
+          "band": "10\u201315 lakh",
+          "count": 197
+        },
+        {
+          "band": "15\u201320 lakh",
+          "count": 54
+        },
+        {
+          "band": "20\u201330 lakh",
+          "count": 13
+        },
+        {
+          "band": "30\u201340 lakh",
+          "count": 3
+        },
+        {
+          "band": "40+ lakh",
+          "count": 4
+        }
+      ],
+      "land_bands": [
+        {
+          "band": "0\u20135",
+          "n": 60,
+          "median": 700000.0
+        },
+        {
+          "band": "5\u201310",
+          "n": 461,
+          "median": 744800.0
+        },
+        {
+          "band": "10\u201320",
+          "n": 261,
+          "median": 1024000.0
+        },
+        {
+          "band": "20\u201340",
+          "n": 16,
+          "median": 1880000.0
+        },
+        {
+          "band": "40+",
+          "n": 1,
+          "median": 950000.0
+        }
+      ]
+    },
+    "GUJARAT": {
+      "n": 546,
+      "median": 700000.0,
+      "mean": 787333.0531135531,
+      "non_ag_median": 150000.0,
+      "below_benchmark_pct": 80.76923076923077,
+      "histogram": [
+        {
+          "band": "<5 lakh",
+          "count": 47
+        },
+        {
+          "band": "5\u201310 lakh",
+          "count": 403
+        },
+        {
+          "band": "10\u201315 lakh",
+          "count": 77
+        },
+        {
+          "band": "15\u201320 lakh",
+          "count": 15
+        },
+        {
+          "band": "20\u201330 lakh",
+          "count": 2
+        },
+        {
+          "band": "30\u201340 lakh",
+          "count": 0
+        },
+        {
+          "band": "40+ lakh",
+          "count": 2
+        }
+      ],
+      "land_bands": [
+        {
+          "band": "0\u20135",
+          "n": 143,
+          "median": 650000.0
+        },
+        {
+          "band": "5\u201310",
+          "n": 216,
+          "median": 700590.0
+        },
+        {
+          "band": "10\u201320",
+          "n": 146,
+          "median": 750000.0
+        },
+        {
+          "band": "20\u201340",
+          "n": 38,
+          "median": 875000.0
+        },
+        {
+          "band": "40+",
+          "n": 3,
+          "median": 1400000.0
+        }
+      ]
+    },
+    "HARYANA": {
+      "n": 982,
+      "median": 1312900.0,
+      "mean": 1655633.0896130346,
+      "non_ag_median": 107500.0,
+      "below_benchmark_pct": 21.283095723014256,
+      "histogram": [
+        {
+          "band": "<5 lakh",
+          "count": 10
+        },
+        {
+          "band": "5\u201310 lakh",
+          "count": 236
+        },
+        {
+          "band": "10\u201315 lakh",
+          "count": 326
+        },
+        {
+          "band": "15\u201320 lakh",
+          "count": 210
+        },
+        {
+          "band": "20\u201330 lakh",
+          "count": 119
+        },
+        {
+          "band": "30\u201340 lakh",
+          "count": 37
+        },
+        {
+          "band": "40+ lakh",
+          "count": 44
+        }
+      ],
+      "land_bands": [
+        {
+          "band": "0\u20135",
+          "n": 62,
+          "median": 838000.0
+        },
+        {
+          "band": "5\u201310",
+          "n": 222,
+          "median": 950000.0
+        },
+        {
+          "band": "10\u201320",
+          "n": 511,
+          "median": 1304700.0
+        },
+        {
+          "band": "20\u201340",
+          "n": 158,
+          "median": 2344837.5
+        },
+        {
+          "band": "40+",
+          "n": 28,
+          "median": 4793000.0
+        }
+      ]
+    },
+    "JHARKHAND": {
+      "n": 211,
+      "median": 736000.0,
+      "mean": 775048.3412322275,
+      "non_ag_median": 332000.0,
+      "below_benchmark_pct": 89.57345971563981,
+      "histogram": [
+        {
+          "band": "<5 lakh",
+          "count": 1
+        },
+        {
+          "band": "5\u201310 lakh",
+          "count": 198
+        },
+        {
+          "band": "10\u201315 lakh",
+          "count": 11
+        },
+        {
+          "band": "15\u201320 lakh",
+          "count": 0
+        },
+        {
+          "band": "20\u201330 lakh",
+          "count": 0
+        },
+        {
+          "band": "30\u201340 lakh",
+          "count": 1
+        },
+        {
+          "band": "40+ lakh",
+          "count": 0
+        }
+      ],
+      "land_bands": [
+        {
+          "band": "0\u20135",
+          "n": 70,
+          "median": 700000.0
+        },
+        {
+          "band": "5\u201310",
+          "n": 104,
+          "median": 750000.0
+        },
+        {
+          "band": "10\u201320",
+          "n": 33,
+          "median": 800000.0
+        },
+        {
+          "band": "20\u201340",
+          "n": 3,
+          "median": 950000.0
+        },
+        {
+          "band": "40+",
+          "n": 1,
+          "median": 3500000.0
+        }
+      ]
+    },
+    "KARNATAKA": {
+      "n": 6746,
+      "median": 1250000.0,
+      "mean": 1444017.8993477616,
+      "non_ag_median": 100000.0,
+      "below_benchmark_pct": 24.310702638600652,
+      "histogram": [
+        {
+          "band": "<5 lakh",
+          "count": 20
+        },
+        {
+          "band": "5\u201310 lakh",
+          "count": 1817
+        },
+        {
+          "band": "10\u201315 lakh",
+          "count": 2754
+        },
+        {
+          "band": "15\u201320 lakh",
+          "count": 1168
+        },
+        {
+          "band": "20\u201330 lakh",
+          "count": 771
+        },
+        {
+          "band": "30\u201340 lakh",
+          "count": 129
+        },
+        {
+          "band": "40+ lakh",
+          "count": 87
+        }
+      ],
+      "land_bands": [
+        {
+          "band": "0\u20135",
+          "n": 1813,
+          "median": 1200000.0
+        },
+        {
+          "band": "5\u201310",
+          "n": 2180,
+          "median": 1100000.0
+        },
+        {
+          "band": "10\u201320",
+          "n": 1627,
+          "median": 1400000.0
+        },
+        {
+          "band": "20\u201340",
+          "n": 1056,
+          "median": 1500000.0
+        },
+        {
+          "band": "40+",
+          "n": 57,
+          "median": 3264000.0
+        }
+      ]
+    },
+    "MADHYA PRADESH": {
+      "n": 14320,
+      "median": 800000.0,
+      "mean": 1244015.71424581,
+      "non_ag_median": 100000.0,
+      "below_benchmark_pct": 64.89525139664805,
+      "histogram": [
+        {
+          "band": "<5 lakh",
+          "count": 396
+        },
+        {
+          "band": "5\u201310 lakh",
+          "count": 9383
+        },
+        {
+          "band": "10\u201315 lakh",
+          "count": 2963
+        },
+        {
+          "band": "15\u201320 lakh",
+          "count": 694
+        },
+        {
+          "band": "20\u201330 lakh",
+          "count": 374
+        },
+        {
+          "band": "30\u201340 lakh",
+          "count": 76
+        },
+        {
+          "band": "40+ lakh",
+          "count": 434
+        }
+      ],
+      "land_bands": [
+        {
+          "band": "0\u20135",
+          "n": 1507,
+          "median": 630000.0
+        },
+        {
+          "band": "5\u201310",
+          "n": 4163,
+          "median": 700000.0
+        },
+        {
+          "band": "10\u201320",
+          "n": 7611,
+          "median": 810000.0
+        },
+        {
+          "band": "20\u201340",
+          "n": 974,
+          "median": 1164000.0
+        },
+        {
+          "band": "40+",
+          "n": 46,
+          "median": 1604000.0
+        }
+      ]
+    },
+    "MAHARASHTRA": {
+      "n": 7834,
+      "median": 1000000.0,
+      "mean": 1212378.9947664028,
+      "non_ag_median": 100000.0,
+      "below_benchmark_pct": 40.36252233852438,
+      "histogram": [
+        {
+          "band": "<5 lakh",
+          "count": 69
+        },
+        {
+          "band": "5\u201310 lakh",
+          "count": 3677
+        },
+        {
+          "band": "10\u201315 lakh",
+          "count": 2395
+        },
+        {
+          "band": "15\u201320 lakh",
+          "count": 1138
+        },
+        {
+          "band": "20\u201330 lakh",
+          "count": 441
+        },
+        {
+          "band": "30\u201340 lakh",
+          "count": 57
+        },
+        {
+          "band": "40+ lakh",
+          "count": 57
+        }
+      ],
+      "land_bands": [
+        {
+          "band": "0\u20135",
+          "n": 1605,
+          "median": 850000.0
+        },
+        {
+          "band": "5\u201310",
+          "n": 2262,
+          "median": 950000.0
+        },
+        {
+          "band": "10\u201320",
+          "n": 2627,
+          "median": 1040000.0
+        },
+        {
+          "band": "20\u201340",
+          "n": 1228,
+          "median": 1476780.0
+        },
+        {
+          "band": "40+",
+          "n": 101,
+          "median": 2000000.0
+        }
+      ]
+    },
+    "ODISHA": {
+      "n": 891,
+      "median": 824900.0,
+      "mean": 1098019.8035914702,
+      "non_ag_median": 400000.0,
+      "below_benchmark_pct": 60.26936026936027,
+      "histogram": [
+        {
+          "band": "<5 lakh",
+          "count": 35
+        },
+        {
+          "band": "5\u201310 lakh",
+          "count": 525
+        },
+        {
+          "band": "10\u201315 lakh",
+          "count": 225
+        },
+        {
+          "band": "15\u201320 lakh",
+          "count": 59
+        },
+        {
+          "band": "20\u201330 lakh",
+          "count": 21
+        },
+        {
+          "band": "30\u201340 lakh",
+          "count": 9
+        },
+        {
+          "band": "40+ lakh",
+          "count": 17
+        }
+      ],
+      "land_bands": [
+        {
+          "band": "0\u20135",
+          "n": 214,
+          "median": 696250.0
+        },
+        {
+          "band": "5\u201310",
+          "n": 288,
+          "median": 800000.0
+        },
+        {
+          "band": "10\u201320",
+          "n": 313,
+          "median": 1000000.0
+        },
+        {
+          "band": "20\u201340",
+          "n": 64,
+          "median": 1150000.0
+        },
+        {
+          "band": "40+",
+          "n": 8,
+          "median": 1512500.0
+        }
+      ]
+    },
+    "PUNJAB": {
+      "n": 243,
+      "median": 1563750.0,
+      "mean": 1899373.2510288067,
+      "non_ag_median": 120000.0,
+      "below_benchmark_pct": 17.695473251028808,
+      "histogram": [
+        {
+          "band": "<5 lakh",
+          "count": 3
+        },
+        {
+          "band": "5\u201310 lakh",
+          "count": 47
+        },
+        {
+          "band": "10\u201315 lakh",
+          "count": 60
+        },
+        {
+          "band": "15\u201320 lakh",
+          "count": 51
+        },
+        {
+          "band": "20\u201330 lakh",
+          "count": 48
+        },
+        {
+          "band": "30\u201340 lakh",
+          "count": 19
+        },
+        {
+          "band": "40+ lakh",
+          "count": 15
+        }
+      ],
+      "land_bands": [
+        {
+          "band": "0\u20135",
+          "n": 19,
+          "median": 797000.0
+        },
+        {
+          "band": "5\u201310",
+          "n": 37,
+          "median": 1007600.0
+        },
+        {
+          "band": "10\u201320",
+          "n": 87,
+          "median": 1336400.0
+        },
+        {
+          "band": "20\u201340",
+          "n": 71,
+          "median": 2088000.0
+        },
+        {
+          "band": "40+",
+          "n": 29,
+          "median": 3803000.0
+        }
+      ]
+    },
+    "RAJASTHAN": {
+      "n": 2,
+      "median": 2100000.0,
+      "mean": 2100000.0,
+      "non_ag_median": 565000.0,
+      "below_benchmark_pct": 0.0,
+      "histogram": [
+        {
+          "band": "<5 lakh",
+          "count": 0
+        },
+        {
+          "band": "5\u201310 lakh",
+          "count": 0
+        },
+        {
+          "band": "10\u201315 lakh",
+          "count": 1
+        },
+        {
+          "band": "15\u201320 lakh",
+          "count": 0
+        },
+        {
+          "band": "20\u201330 lakh",
+          "count": 0
+        },
+        {
+          "band": "30\u201340 lakh",
+          "count": 1
+        },
+        {
+          "band": "40+ lakh",
+          "count": 0
+        }
+      ],
+      "land_bands": [
+        {
+          "band": "0\u20135",
+          "n": 1,
+          "median": 1200000.0
+        },
+        {
+          "band": "10\u201320",
+          "n": 1,
+          "median": 3000000.0
+        }
+      ]
+    },
+    "TELANGANA": {
+      "n": 7098,
+      "median": 950000.0,
+      "mean": 1158119.509298394,
+      "non_ag_median": 0.0,
+      "below_benchmark_pct": 49.591434206818825,
+      "histogram": [
+        {
+          "band": "<5 lakh",
+          "count": 145
+        },
+        {
+          "band": "5\u201310 lakh",
+          "count": 3581
+        },
+        {
+          "band": "10\u201315 lakh",
+          "count": 2318
+        },
+        {
+          "band": "15\u201320 lakh",
+          "count": 667
+        },
+        {
+          "band": "20\u201330 lakh",
+          "count": 244
+        },
+        {
+          "band": "30\u201340 lakh",
+          "count": 47
+        },
+        {
+          "band": "40+ lakh",
+          "count": 96
+        }
+      ],
+      "land_bands": [
+        {
+          "band": "0\u20135",
+          "n": 366,
+          "median": 720000.0
+        },
+        {
+          "band": "5\u201310",
+          "n": 3168,
+          "median": 810000.0
+        },
+        {
+          "band": "10\u201320",
+          "n": 3189,
+          "median": 1060000.0
+        },
+        {
+          "band": "20\u201340",
+          "n": 357,
+          "median": 1200000.0
+        },
+        {
+          "band": "40+",
+          "n": 8,
+          "median": 1450000.0
+        }
+      ]
+    },
+    "UTTAR PRADESH": {
+      "n": 2393,
+      "median": 700000.0,
+      "mean": 830783.696197242,
+      "non_ag_median": 250000.0,
+      "below_benchmark_pct": 77.3923944839114,
+      "histogram": [
+        {
+          "band": "<5 lakh",
+          "count": 130
+        },
+        {
+          "band": "5\u201310 lakh",
+          "count": 1774
+        },
+        {
+          "band": "10\u201315 lakh",
+          "count": 373
+        },
+        {
+          "band": "15\u201320 lakh",
+          "count": 80
+        },
+        {
+          "band": "20\u201330 lakh",
+          "count": 22
+        },
+        {
+          "band": "30\u201340 lakh",
+          "count": 2
+        },
+        {
+          "band": "40+ lakh",
+          "count": 12
+        }
+      ],
+      "land_bands": [
+        {
+          "band": "0\u20135",
+          "n": 902,
+          "median": 680000.0
+        },
+        {
+          "band": "5\u201310",
+          "n": 1116,
+          "median": 707500.0
+        },
+        {
+          "band": "10\u201320",
+          "n": 307,
+          "median": 850000.0
+        },
+        {
+          "band": "20\u201340",
+          "n": 60,
+          "median": 925000.0
+        },
+        {
+          "band": "40+",
+          "n": 2,
+          "median": 1300000.0
+        }
+      ]
+    },
+    "WEST BENGAL": {
+      "n": 593,
+      "median": 960000.0,
+      "mean": 1104207.6239460371,
+      "non_ag_median": 320000.0,
+      "below_benchmark_pct": 46.0370994940978,
+      "histogram": [
+        {
+          "band": "<5 lakh",
+          "count": 8
+        },
+        {
+          "band": "5\u201310 lakh",
+          "count": 307
+        },
+        {
+          "band": "10\u201315 lakh",
+          "count": 193
+        },
+        {
+          "band": "15\u201320 lakh",
+          "count": 56
+        },
+        {
+          "band": "20\u201330 lakh",
+          "count": 24
+        },
+        {
+          "band": "30\u201340 lakh",
+          "count": 1
+        },
+        {
+          "band": "40+ lakh",
+          "count": 4
+        }
+      ],
+      "land_bands": [
+        {
+          "band": "0\u20135",
+          "n": 508,
+          "median": 937500.0
+        },
+        {
+          "band": "5\u201310",
+          "n": 81,
+          "median": 1550000.0
+        },
+        {
+          "band": "10\u201320",
+          "n": 4,
+          "median": 2139000.0
+        }
+      ]
+    }
+  },
+  "states": [
+    {
+      "state": "ANDHRA PRADESH",
+      "n": 3985,
+      "median": 1150000.0
+    },
+    {
+      "state": "ASSAM",
+      "n": 41,
+      "median": 911200.0
+    },
+    {
+      "state": "BIHAR",
+      "n": 1265,
+      "median": 700000.0
+    },
+    {
+      "state": "CHANDIGARH",
+      "n": 21,
+      "median": 1075000.0
+    },
+    {
+      "state": "CHATTISGARH",
+      "n": 799,
+      "median": 850000.0
+    },
+    {
+      "state": "GUJARAT",
+      "n": 546,
+      "median": 700000.0
+    },
+    {
+      "state": "HARYANA",
+      "n": 982,
+      "median": 1312900.0
+    },
+    {
+      "state": "JHARKHAND",
+      "n": 211,
+      "median": 736000.0
+    },
+    {
+      "state": "KARNATAKA",
+      "n": 6746,
+      "median": 1250000.0
+    },
+    {
+      "state": "MADHYA PRADESH",
+      "n": 14320,
+      "median": 800000.0
+    },
+    {
+      "state": "MAHARASHTRA",
+      "n": 7834,
+      "median": 1000000.0
+    },
+    {
+      "state": "ODISHA",
+      "n": 891,
+      "median": 824900.0
+    },
+    {
+      "state": "PUNJAB",
+      "n": 243,
+      "median": 1563750.0
+    },
+    {
+      "state": "RAJASTHAN",
+      "n": 2,
+      "median": 2100000.0
+    },
+    {
+      "state": "TELANGANA",
+      "n": 7098,
+      "median": 950000.0
+    },
+    {
+      "state": "UTTAR PRADESH",
+      "n": 2393,
+      "median": 700000.0
+    },
+    {
+      "state": "WEST BENGAL",
+      "n": 593,
+      "median": 960000.0
+    }
+  ],
+  "profiles": [
+    {
+      "name": "Example A",
+      "hypothetical": true,
+      "inputs": {
+        "state": "MADHYA PRADESH",
+        "land_area": 6.0,
+        "non_ag_income": 60000.0,
+        "mandi_distance": 10.6,
+        "kharif_rainfall": 1377.46,
+        "rabi_rainfall": 102.78,
+        "cropping_density": 57.47,
+        "agri_score": 26.8
+      }
+    },
+    {
+      "name": "Example B",
+      "hypothetical": true,
+      "inputs": {
+        "state": "MAHARASHTRA",
+        "land_area": 10.0,
+        "non_ag_income": 100000.0,
+        "mandi_distance": 10.6,
+        "kharif_rainfall": 1377.46,
+        "rabi_rainfall": 102.78,
+        "cropping_density": 57.47,
+        "agri_score": 26.8
+      }
+    },
+    {
+      "name": "Example C",
+      "hypothetical": true,
+      "inputs": {
+        "state": "KARNATAKA",
+        "land_area": 9.6,
+        "non_ag_income": 160000.0,
+        "mandi_distance": 10.6,
+        "kharif_rainfall": 1377.46,
+        "rabi_rainfall": 102.78,
+        "cropping_density": 57.47,
+        "agri_score": 26.8
+      }
+    }
+  ],
+  "summary_scope": "All retained labeled source rows; descriptive, not a population estimate",
+  "holdout_error_histogram": [
+    {
+      "band": "<-10 lakh",
+      "count": 98
+    },
+    {
+      "band": "-10 to -5 lakh",
+      "count": 606
+    },
+    {
+      "band": "-5 to -2.5 lakh",
+      "count": 1838
+    },
+    {
+      "band": "-2.5 to 0 lakh",
+      "count": 3319
+    },
+    {
+      "band": "0 to 2.5 lakh",
+      "count": 1892
+    },
+    {
+      "band": "2.5 to 5 lakh",
+      "count": 816
+    },
+    {
+      "band": "5 to 10 lakh",
+      "count": 600
+    },
+    {
+      "band": "10+ lakh",
+      "count": 423
+    }
+  ]
+}

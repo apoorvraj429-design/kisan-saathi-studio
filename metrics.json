@@ -1,0 +1,281 @@
+{
+  "project": "Kisan Saathi Studio",
+  "model_version": "fresh-loan-group-v1",
+  "seed": 42,
+  "created_utc": "2026-10-18T10:53:17.119082+00:00",
+  "target": "Target_Variable/Total Income",
+  "currency": "INR",
+  "income_period": "Not specified in supplied dictionary",
+  "land_unit": "Not specified for Total_Land_For_Agriculture in supplied dictionary",
+  "original_labeled_rows": 47970,
+  "retained_labeled_rows": 47970,
+  "source_train_rows": 47970,
+  "original_column_count": 105,
+  "unique_loan_ids": 47948,
+  "repeated_loan_id_excess_rows": 22,
+  "exact_duplicate_rows": 2,
+  "dropped_rows": 0,
+  "missing_land_rows": 71,
+  "negative_target_rows_retained": 0,
+  "source_test_rows": 9986,
+  "unlabeled_rows": 9986,
+  "states": [
+    "ANDHRA PRADESH",
+    "ASSAM",
+    "BIHAR",
+    "CHANDIGARH",
+    "CHATTISGARH",
+    "GUJARAT",
+    "HARYANA",
+    "JHARKHAND",
+    "KARNATAKA",
+    "MADHYA PRADESH",
+    "MAHARASHTRA",
+    "ODISHA",
+    "PUNJAB",
+    "RAJASTHAN",
+    "TELANGANA",
+    "UTTAR PRADESH",
+    "WEST BENGAL"
+  ],
+  "common_states": [
+    "ANDHRA PRADESH",
+    "BIHAR",
+    "CHATTISGARH",
+    "GUJARAT",
+    "HARYANA",
+    "JHARKHAND",
+    "KARNATAKA",
+    "MADHYA PRADESH",
+    "MAHARASHTRA",
+    "ODISHA",
+    "PUNJAB",
+    "TELANGANA",
+    "UTTAR PRADESH",
+    "WEST BENGAL"
+  ],
+  "rare_state_min_fit_rows": 30,
+  "split": {
+    "train": {
+      "records": 28781,
+      "loan_groups": 28768,
+      "villages": 9119
+    },
+    "validation": {
+      "records": 9597,
+      "loan_groups": 9590,
+      "villages": 4882
+    },
+    "holdout": {
+      "records": 9592,
+      "loan_groups": 9590,
+      "villages": 4866
+    }
+  },
+  "split_method": "GroupShuffleSplit on FarmerID loan agreement; 60% fit, 20% calibration, 20% internal holdout",
+  "split_assignment_sha256": "024ef0951ca619e4d869c91f8dc23fdb7b01d4aec6074a873476fe8f83807b73",
+  "loan_group_overlap_counts": {
+    "train_validation": 0,
+    "train_holdout": 0,
+    "validation_holdout": 0
+  },
+  "preprocessing_fit_partition_only": true,
+  "refit_after_evaluation": false,
+  "benchmark_inr": 942000.0,
+  "benchmark_definition": "Median observed total income in fit partition only",
+  "probability_threshold": 0.5,
+  "selected_C": 1.0,
+  "logistic_selection": "Fixed C=1; no holdout-driven tuning",
+  "linear_validation": {
+    "mae": 341818.03871978086,
+    "rmse": 605278.8274719956,
+    "r2": 0.8737878255606305,
+    "median_absolute_error": 229634.0195458911,
+    "mape_pct": 30.985425707308295
+  },
+  "linear_holdout": {
+    "mae": 363566.97447485453,
+    "rmse": 762907.8178694551,
+    "r2": 0.8986892861650337,
+    "median_absolute_error": 227811.88441166695,
+    "mape_pct": 30.908792058254758
+  },
+  "logistic_validation": {
+    "accuracy": 0.7152235073460457,
+    "precision": 0.7026552128074971,
+    "recall": 0.7483884383447702,
+    "f1": 0.7248011277816937,
+    "roc_auc": 0.7872415712115945,
+    "brier": 0.18825266117829662,
+    "confusion_matrix": [
+      [
+        3265,
+        1523
+      ],
+      [
+        1210,
+        3599
+      ]
+    ]
+  },
+  "logistic_holdout": {
+    "accuracy": 0.718932443703086,
+    "precision": 0.6929533476478625,
+    "recall": 0.7596832869676867,
+    "f1": 0.7247856267864434,
+    "roc_auc": 0.7940795172398463,
+    "brier": 0.18551598856776938,
+    "confusion_matrix": [
+      [
+        3346,
+        1573
+      ],
+      [
+        1123,
+        3550
+      ]
+    ]
+  },
+  "baseline_mean_holdout": {
+    "mae": 614945.8069005131,
+    "rmse": 2397534.685150423,
+    "r2": -0.0005551746725598328,
+    "median_absolute_error": 416059.1039574719,
+    "mape_pct": 50.29952992328447
+  },
+  "baseline_median_holdout": {
+    "mae": 554368.5248123436,
+    "rmse": 2419552.881375863,
+    "r2": -0.0190171226847482,
+    "median_absolute_error": 258000.0,
+    "mape_pct": 34.38183962932578
+  },
+  "known_component_baseline_holdout": {
+    "mae": 968358.0403461218,
+    "rmse": 1314569.0004878545,
+    "r2": 0.6991998709571643,
+    "median_absolute_error": 800000.0,
+    "mape_pct": 82.30673395369999
+  },
+  "known_component_baseline_definition": "Known non-farm income alone; no fitted adjustment",
+  "known_component_plus_typical_farm_holdout": {
+    "mae": 415289.7961843203,
+    "rmse": 904830.8087647335,
+    "r2": 0.8574897821958987,
+    "median_absolute_error": 250000.0,
+    "mape_pct": 33.42615468051015
+  },
+  "known_component_plus_typical_farm_definition": "Known non-farm income plus median(total income - known non-farm income) learned in fit partition only",
+  "typical_farm_component_fit_median_inr": 800000.0,
+  "majority_baseline_accuracy": 0.5128231859883235,
+  "error_band_radius": 690914.5555766444,
+  "error_band_validation_target": 0.9,
+  "error_band_holdout_coverage": 0.8944954128440367,
+  "error_band_holdout_loan_group_coverage": 0.894473409801877,
+  "calibration": {
+    "groups": 9590,
+    "order_statistic_rank": 8632,
+    "target_coverage": 0.9,
+    "records": 9597,
+    "unit": "Maximum absolute error per calibration loan agreement group",
+    "holdout_used": false
+  },
+  "schema": {
+    "land_area": {
+      "min": 0.1,
+      "max": 151.0,
+      "median": 10.0,
+      "p01": 2.0,
+      "p99": 34.0,
+      "missing_train": 55
+    },
+    "non_ag_income": {
+      "min": 0.0,
+      "max": 70564600.0,
+      "median": 100000.0,
+      "p01": 0.0,
+      "p99": 1757500.0000000272,
+      "missing_train": 0
+    },
+    "mandi_distance": {
+      "min": 0.0,
+      "max": 44.2,
+      "median": 10.6,
+      "p01": 0.0,
+      "p99": 35.120000000000076,
+      "missing_train": 0
+    },
+    "kharif_rainfall": {
+      "min": 530.37,
+      "max": 2569.1,
+      "median": 1377.46,
+      "p01": 651.8940000000001,
+      "p99": 2414.79,
+      "missing_train": 0
+    },
+    "rabi_rainfall": {
+      "min": 17.49,
+      "max": 733.76,
+      "median": 102.78,
+      "p01": 23.32,
+      "p99": 479.91,
+      "missing_train": 0
+    },
+    "cropping_density": {
+      "min": 0.0,
+      "max": 96.35,
+      "median": 57.47,
+      "p01": 10.244000000000002,
+      "p99": 92.43,
+      "missing_train": 0
+    },
+    "agri_score": {
+      "min": 0.72,
+      "max": 55.86,
+      "median": 26.8,
+      "p01": 6.92,
+      "p99": 47.54,
+      "missing_train": 0
+    }
+  },
+  "train_target_p99": 6000000.0,
+  "versions": {
+    "python": "3.12.14",
+    "scikit_learn": "1.8.0",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scipy": "1.17.0",
+    "joblib": "1.5.3"
+  },
+  "limitations": [
+    "Internal holdout groups loan agreements, not villages. Unseen-village generalization is not tested.",
+    "Known non-farm income is already part of total income; strong overall fit partly reflects this shared component.",
+    "Income reporting period and farmer land-area unit are not specified. Environmental source inputs refer to 2022.",
+    "No current-season validation, causal claims, calibrated poverty category or credit decision use is established.",
+    "Loan groups can share villages; empirical coverage is not an individual guarantee or a proof of independent sampling.",
+    "All labeled rows are retained, including repeated loan IDs; repetition is contained within a partition."
+  ],
+  "without_non_ag_income_holdout": {
+    "mae": 571207.8451600518,
+    "rmse": 2382101.851660733,
+    "r2": 0.012284434002244438,
+    "median_absolute_error": 334768.6688864849,
+    "mape_pct": 44.63254575122818
+  },
+  "holdout_rows_in_fit_villages_fraction": 0.8525854879065888,
+  "source_village_groups": 11349,
+  "source_sha256": {
+    "lte_train(1).csv": "cff15306aa466f2814a8a9fffcb76f71f35830972f94040265511d91cb5899f6",
+    "lte_test(1).csv": "813af2a24c57e0112781d0d400a0a82627f88c7e20a65bebb48ad2ba423fc6b5"
+  },
+  "training_script_sha256": "298aab46ee2e1a81aad5767f9f0fe4a2a0843c01c4c2d199766528acdeb603b7",
+  "unlabeled_scoring": {
+    "records": 9986,
+    "observed_targets": 0,
+    "accuracy_available": false,
+    "use": "Predictions only; not used for fit, calibration, feature selection or reported accuracy",
+    "loan_ids_overlapping_labeled_file": 0,
+    "rows_in_labeled_villages_fraction": 0.9113759262968155
+  },
+  "model_bundle_sha256": "7e6726d9ed4b26a902209f7f6e7444c8b610f9d8a866d0a77f99f68313e86cd7"
+}
